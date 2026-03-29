@@ -1,140 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>House of Krooks</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+import React from "react";
+import { motion } from "framer-motion";
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
-  color: white;
-}
+export default function Home() {
+  return (
+    <div className="bg-black text-white font-sans overflow-x-hidden">
+      {/* HERO */}
+      <section className="relative h-screen flex flex-col justify-center items-center text-center px-6">
+        {/* Background glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-900/20 to-black blur-2xl" />
 
-/* HERO */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+        {/* Logo */}
+        <motion.img
+          src="/mnt/data/Krooks_WebBanner_1920.png"
+          alt="House of Krooks"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 w-full max-w-4xl mb-6 drop-shadow-[0_0_40px_rgba(255,60,0,0.6)]"
+        />
 
-.hero img {
-  max-width: 700px;
-  width: 90%;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 0 25px rgba(255,60,0,0.7));
-}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="text-xl text-gray-300 mb-6 relative z-10"
+        >
+          Frame & Frequency – Audio. Visual. Live.
+        </motion.p>
 
-.hero h1 {
-  font-size: 20px;
-  color: #aaa;
-  margin-bottom: 30px;
-}
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="relative z-10 bg-gradient-to-r from-orange-500 to-red-600 px-8 py-3 rounded-2xl font-semibold shadow-lg"
+        >
+          Get a Quote
+        </motion.button>
+      </section>
 
-button {
-  background: linear-gradient(90deg, #ff3c00, #ff7a00);
-  border: none;
-  padding: 15px 35px;
-  border-radius: 30px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
+      {/* SERVICES */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12">Services</h2>
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255,60,0,0.6);
-}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            "Livestream Production",
+            "Audio & Visual",
+            "Event Production",
+            "Video Editing",
+          ].map((title, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -8 }}
+              className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-2xl shadow-lg"
+            >
+              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <p className="text-gray-400">
+                High-end production tailored for professional results.
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-/* SECTIONS */
-.section {
-  padding: 80px 20px;
-  max-width: 1000px;
-  margin: auto;
-  text-align: center;
-}
+      {/* PORTFOLIO */}
+      <section className="py-24 px-6 bg-black">
+        <h2 className="text-4xl font-bold text-center mb-12">Portfolio</h2>
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-900 h-56 rounded-2xl shadow-inner"
+            />
+          ))}
+        </div>
+      </section>
 
-.card {
-  background: #111;
-  padding: 25px;
-  border-radius: 15px;
-}
+      {/* CONTACT */}
+      <section className="py-24 px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
+        <p className="text-gray-400 mb-6">
+          Ready to work together? Let’s build something cinematic.
+        </p>
 
-.card h3 {
-  margin-bottom: 10px;
-}
+        <a
+          href="mailto:houseofkrooks@gmail.com"
+          className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-3 rounded-2xl font-semibold"
+        >
+          Contact
+        </a>
+      </section>
 
-/* CONTACT */
-.contact {
-  background: #050505;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #666;
-}
-</style>
-</head>
-
-<body>
-
-<!-- HERO -->
-<div class="hero">
-<img src="./logo.png" />
-  <h1>Frame & Frequency – Audio. Visual. Live.</h1>
-  <button onclick="window.location='mailto:houseofkrooks@gmail.com'">
-    Contact Us
-  </button>
-</div>
-
-<!-- SERVICES -->
-<div class="section">
-  <h2>Services</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Livestream Production</h3>
-      <p>Professional live streaming for events and shows.</p>
+      {/* FOOTER */}
+      <footer className="py-6 text-center text-gray-600">
+        © {new Date().getFullYear()} House of Krooks – Frame & Frequency
+      </footer>
     </div>
-
-    <div class="card">
-      <h3>Audio & Visual</h3>
-      <p>High-end sound and visual systems for productions.</p>
-    </div>
-
-    <div class="card">
-      <h3>Event Production</h3>
-      <p>Full setup, execution and management of events.</p>
-    </div>
-
-    <div class="card">
-      <h3>Video Editing</h3>
-      <p>Cinematic edits for content and branding.</p>
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div class="section contact">
-  <h2>Get in Touch</h2>
-  <p>houseofkrooks@gmail.com</p>
-</div>
-
-<footer>
-© 2026 House of Krooks – Frame & Frequency
-</footer>
-
-</body>
-</html>
+  );
+}
