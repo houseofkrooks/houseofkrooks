@@ -1,0 +1,100 @@
+import React from "react";
+import { motion } from "framer-motion";
+
+export default function Home() {
+  return (
+    <div className="bg-black text-white font-sans overflow-x-hidden">
+      {/* HERO */}
+      <section className="relative h-screen flex flex-col justify-center items-center text-center px-6">
+        {/* Background glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-900/20 to-black blur-2xl" />
+
+        {/* Logo */}
+        <motion.img
+          src="/mnt/data/Krooks_WebBanner_1920.png"
+          alt="House of Krooks"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 w-full max-w-4xl mb-6 drop-shadow-[0_0_40px_rgba(255,60,0,0.6)]"
+        />
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="text-xl text-gray-300 mb-6 relative z-10"
+        >
+          Frame & Frequency – Audio. Visual. Live.
+        </motion.p>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          className="relative z-10 bg-gradient-to-r from-orange-500 to-red-600 px-8 py-3 rounded-2xl font-semibold shadow-lg"
+        >
+          Get a Quote
+        </motion.button>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-24 px-6 max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12">Services</h2>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            "Livestream Production",
+            "Audio & Visual",
+            "Event Production",
+            "Video Editing",
+          ].map((title, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -8 }}
+              className="bg-gradient-to-br from-gray-900 to-black border border-gray-800 p-6 rounded-2xl shadow-lg"
+            >
+              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <p className="text-gray-400">
+                High-end production tailored for professional results.
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* PORTFOLIO */}
+      <section className="py-24 px-6 bg-black">
+        <h2 className="text-4xl font-bold text-center mb-12">Portfolio</h2>
+
+        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {[1, 2, 3].map((i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.02 }}
+              className="bg-gray-900 h-56 rounded-2xl shadow-inner"
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section className="py-24 px-6 text-center">
+        <h2 className="text-4xl font-bold mb-4">Get in Touch</h2>
+        <p className="text-gray-400 mb-6">
+          Ready to work together? Let’s build something cinematic.
+        </p>
+
+        <a
+          href="mailto:houseofkrooks@gmail.com"
+          className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-3 rounded-2xl font-semibold"
+        >
+          Contact
+        </a>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-6 text-center text-gray-600">
+        © {new Date().getFullYear()} House of Krooks – Frame & Frequency
+      </footer>
+    </div>
+  );
+}
